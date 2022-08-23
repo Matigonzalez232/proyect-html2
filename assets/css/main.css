@@ -1,0 +1,110 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+p {
+    color: #fff;
+    font-size: .8rem;
+}
+h5{
+    color: #fff;
+    font-size: 1rem;
+}
+
+.footer-header {
+    background-color: black;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.footer-header .card{
+    background-color: black;
+}
+.footer-header .card .card-body{
+    background-color: black;
+}
+.footer-header img {
+    height: auto;
+    width: 15em;
+}
+
+.navbar {
+    background-color: #E74F11;
+    
+}
+
+.navbar li a {
+    color: #fff;
+    font-weight: bold;
+   font-size:.91em;
+   margin: 0 2em auto 2em;
+}
+.carousel-item img{
+    object-fit: cover;
+    height:700px;
+    width: 100%; 
+    /* max-height: 725px; */
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1;
+}
+.card-grande{
+    padding-top: 4em;
+    padding-bottom: 3em;
+    width: 97%;
+    height: auto;
+    padding-left: 3em;
+}
+.card-grande .c-g-texto {
+    background-color: #E74F11;
+    color: #fff;
+    height: 18.3em;
+}
+.card-grande .c-g-texto p{
+    font-size: 1.1em;
+   margin-left:1.9em;
+}
+.c-g-texto h3 {
+    margin-top: 2.3em;
+   margin-left:1em;
+   font-size:2.1em;
+   font-weight:bold
+   
+}
+.card-grande img{
+    display: block;
+   height: auto;
+   padding-right: 0px;
+   margin-right: 0px;
+   padding-bottom: 0.3rem;
+   
+}
+.cards{
+    display: flex;
+    justify-content: center !important;
+    padding-left: 3em;
+    padding-bottom: 4em;
+}
+.card {
+    padding-top: .5em;
+    width: 18em;
+    border: 0px;
+    /* -webkit-margin-start: .8em; */
+}
+.card img{
+    max-height: 62%;
+}
+
+.card .card-title {
+    text-align: center;
+    
+}
+#cards-arriba .card-body p{
+    margin-bottom: 3em;
+}
+.card .card-body {
+    background-color: #E74F11;
+    text-align: left;
+
+}
