@@ -11,12 +11,23 @@ private $category;
 
 function __construct()
 {
-//    $this->create('pala','paleador');
+//    $this->create('pala','paleador');//53min usa los archivos para que te lleguen?
     $this->db = new DB();
+    $this->title=$_POST['title'];
+    $this->content=$_POST['content'];
 }
-function create($title,$content){
-    // $query = $this->db->connect()->prepare("INSERT INTO contents ( title, content) VALUES (:title,:content) ");
-    // $query->execute(['title'=>$title,'content'=>$content]); 
+function create($item){
+    $query = $this->db->connect()->prepare('INSERT INTO contents (title , content ) VALUES (title = :title, content = :content)');
+    try {
+        $query->execute([
+            'title' => $item['title'],
+            'content' => $item['content']
+
+        ]);
+        return  $query->fetchAll();
+    } catch (PDOException $e) {
+        return false;
+    }
 }
 function delete(){
     
