@@ -9,6 +9,11 @@ h5{
     color: #fff;
     font-size: 1rem;
 }
+.btn{
+    color: #fff;
+    background-color: #E74F11;
+    border-color: #E74F11;
+}
 
 .footer-header {
     background-color: black;

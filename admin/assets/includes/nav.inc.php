@@ -16,7 +16,7 @@
                     <a class="nav-link" href="http://server.com/tutoriales-mati/proyect-html2/ubicacion.php">DÓNDE ENCONTRARNOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="http://server.com/tutoriales-mati/proyect-html2/admin/ubicacion.php">CONTACTO</a>
+                    <a class="nav-link " href="http://server.com/tutoriales-mati/proyect-html2/contacto.php">CONTACTO</a>
                 </li>
             </ul>
         </div>
