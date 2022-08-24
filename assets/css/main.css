@@ -44,11 +44,7 @@ h5{
     width: 100%; 
     /* max-height: 725px; */
 }
-tbody, td, tfoot, th, thead, tr {
-    border-color: inherit;
-    border-style: solid;
-    border-width: 1;
-}
+
 .card-grande{
     padding-top: 4em;
     padding-bottom: 3em;

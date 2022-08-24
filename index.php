@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css?ts=<?=time()?>" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css?ts=<?= time() ?>" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
     <title>proyecto-html</title>
 </head>
@@ -22,31 +22,9 @@
 
         </div>
     </header>
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">INICIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://server.com/tutoriales-mati/proyecto-html-bootstrap_desafio2/sobre-nosotros.php">SOBRE NOSOTROS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://server.com/tutoriales-mati/proyecto-html-bootstrap_desafio2/servicios.php">SERVICIOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://server.com/tutoriales-mati/proyecto-html-bootstrap_desafio2/ubicacion.php">DÓNDE ENCONTRARNOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="http://server.com/tutoriales-mati/proyecto-html-bootstrap_desafio2/contacto.php">CONTACTO</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <?php
+    include_once 'assets/includes/nav.inc.php';
+    ?>
 
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -75,27 +53,28 @@
 
     <table class="pt-5" width="50%" style="padding-right: 50%; margin-left: 350px; ">
         <!--tabla de contenidos-->
-        <thead >
+        <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Content</th>
             </tr>
-        </thead >
-        <tbody >
-        <?php
-        include_once 'Classes/contents.php';
-        $contents = new Contents;
-        foreach ($contents->list() as $content) {
-        ?>
-            <tr>
-            <td><?php echo  $content['id']; ?></td>
-            <td><?php echo $content['title']; ?></td>
-            <td><?php echo $content['content']; ?></td>
-            </tr>
-        <?php
-        }
-        ?>
+        </thead>
+        <tbody>
+            <?php
+            include_once 'Classes/contents.php';
+            $contents = new Contents;
+            foreach ($contents->list() as $content) {
+            ?>
+                <tr>
+                    <td><?php echo  $content['id']; ?></td>
+                    <td><?php echo $content['title']; ?></td>
+                    <td><?php echo $content['content']; ?></td>
+                    <td> <a href="">delete</a></td>
+                </tr>
+            <?php
+            }
+            ?>
         </tbody>
     </table>
 

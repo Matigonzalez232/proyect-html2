@@ -21,13 +21,30 @@ function create($title,$content){
 function delete(){
     
 }
-function update(){
+function update($item){
+    $query = $this->db->connect()->prepare('UPDATE contents SET title = :title, content = :content WHERE id =:id');
+    try {
+        $query->execute([
+            'id' => $item['id'],
+            'title' => $item['title'],
+            'content' => $item['content']
+
+        ]);
+        return  $query->fetchAll();
+    } catch (PDOException $e) {
+        return false;
+    }
     
 }
-function view(){
-    // $query = $this->db->connect()->prepare('SELECT * FROM contents WHERE id = :id');
-    // $query->execute(['id' =>$this->id]);
-    // return  $query->fetchAll();
+function view($id){
+    $query = $this->db->connect()->prepare('SELECT * FROM contents WHERE id = :id');
+    try {
+    $query->execute(['id' =>$this->id]);
+    return  $query->fetchAll();
+} catch (PDOException $e) {
+    return false;
+}
+   
 }
 function list(){
     $query = $this->db->connect()->query('SELECT * FROM contents');
