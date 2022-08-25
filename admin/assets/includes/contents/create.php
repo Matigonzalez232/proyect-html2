@@ -1,6 +1,14 @@
 <?php
-include_once __DIR__ . '/assets/includes/header.php';
-include_once __DIR__ . '/assets/includes/nav.inc.php';
+include_once dirname(__DIR__,1) . '/header.php';
+include_once dirname(__DIR__,1) . '/nav.inc.php';
+var_dump(dirname(__DIR__,1) . '/nav.inc.php');
+include_once dirname(__DIR__,4) . '/Classes/contents.php'; 
+$content= new Contents();
+if(isset($_POST['title'])){
+    
+    $content->create($_POST);
+}
+ 
 ?>
 <div class="container">
     <div class="row">
@@ -10,7 +18,7 @@ include_once __DIR__ . '/assets/includes/nav.inc.php';
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="<?php include_once dirname(__DIR__,1) . '/Classes/contents.php;' ?>contents.php" method="post">
+            <form class="row g-3" action="https://server.com/tutoriales-mati/proyect-html2/admin/crear.php" method="post">
                 
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>
@@ -22,7 +30,7 @@ include_once __DIR__ . '/assets/includes/nav.inc.php';
                 </div>
 
                 <div class="col">
-                    <button type="submit"  class="btn " name="registro">Registrar</button>
+                    <button type="submit"  class="btn ">Registrar</button>
                 </div>
 
             </form>
@@ -30,5 +38,7 @@ include_once __DIR__ . '/assets/includes/nav.inc.php';
     </div>
     </div>
 <?php
-include_once __DIR__ . '/assets/includes/footer.php';
+ 
+ 
+include_once dirname(__DIR__,1) . '/footer.php';
 ?>

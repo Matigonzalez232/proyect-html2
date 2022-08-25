@@ -51,32 +51,7 @@
 
 
 
-    <table class="pt-5" width="50%" style="padding-right: 50%; margin-left: 350px; ">
-        <!--tabla de contenidos-->
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include_once 'Classes/contents.php';
-            $contents = new Contents;
-            foreach ($contents->list() as $content) {
-            ?>
-                <tr>
-                    <td><?php echo  $content['id']; ?></td>
-                    <td><?php echo $content['title']; ?></td>
-                    <td><?php echo $content['content']; ?></td>
-                    <td> <a href="">delete</a></td>
-                </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
+    
 
     <div class="container pb-3">
         <div class="row card-grande">
