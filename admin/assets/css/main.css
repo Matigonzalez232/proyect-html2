@@ -1,6 +1,11 @@
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 p {
     color: #fff;
     font-size: .8rem;
@@ -19,6 +24,9 @@ h5{
     background-color: black;
     padding-top: 2em;
     padding-bottom: 2em;
+}
+footer{
+    margin-top: auto;
 }
 
 .footer-header .card{

@@ -1,8 +1,7 @@
 <?php
-include_once dirname(__DIR__,1) . '/header.php';
-include_once dirname(__DIR__,1) . '/nav.inc.php';
-var_dump(dirname(__DIR__,1) . '/nav.inc.php');
-include_once dirname(__DIR__,4) . '/Classes/contents.php'; 
+
+include_once dirname(__DIR__,4) . '/Classes/contents.php';
+
 $content= new Contents();
 if(isset($_POST['title'])){
     
@@ -40,5 +39,4 @@ if(isset($_POST['title'])){
 <?php
  
  
-include_once dirname(__DIR__,1) . '/footer.php';
 ?>
