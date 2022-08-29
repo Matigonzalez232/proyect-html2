@@ -1,7 +1,7 @@
 <?php
 
 include_once dirname(__DIR__, 4) . '/Classes/contents.php';
-
+include_once dirname(__DIR__, 4) . '/Classes/images.php';
 $contents = new Contents();
 $placehold = $contents->view($_GET['id']);
 if (isset($_POST['title'])) {

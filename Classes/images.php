@@ -8,20 +8,20 @@ class Images
     {
         $this->db = new DB();
     }
-    function create($item)
-    {
+    // function create($item)
+    // {
 
 
-        $query = $this->db->connect()->prepare('INSERT INTO images (url, content ) VALUES (:url, :content)');
+    //     $query = $this->db->connect()->prepare('INSERT INTO images (url, content ) VALUES (:url, :content)');
 
-        try {
-            $query->execute($item);
+    //     try {
+    //         $query->execute($item);
 
-            return  $query->fetchAll();
-        } catch (PDOException $e) {
-            return false;
-        }
-    }
+    //         return  $query->fetchAll();
+    //     } catch (PDOException $e) {
+    //         return false;
+    //     }
+    // }
     // function delete($id)
     // {
     //     $query = $this->db->connect()->prepare('DELETE FROM contents WHERE id=:id');
@@ -59,10 +59,10 @@ class Images
     //     }
     // }
     
-    // function list()
-    // {
-    //     $query = $this->db->connect()->query('SELECT * FROM contents');
-    //     return  $query->fetchAll();
-    // }
+    function list() //
+    {
+        $query = $this->db->connect()->query('SELECT * FROM images');
+        return  $query->fetchAll();
+    }
 
 }
