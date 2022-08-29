@@ -19,7 +19,7 @@ class Contents
     {
 
 
-        $query = $this->db->connect()->prepare('INSERT INTO contents (title , content ) VALUES (:title, :content)');
+        $query = $this->db->connect()->prepare('INSERT INTO contents (title , content, keywords, description, category ) VALUES (:title, :content, :keywords, :description, :category)');
 
         try {
             $query->execute($item);

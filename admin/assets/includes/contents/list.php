@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row mt-5">
         <?php
          include_once dirname(__DIR__, 4) . '/Classes/contents.php';
          $contents = new Contents;
@@ -9,7 +9,7 @@
 
         }
         ?>
-        <table class="pt-5 col-12" width="50%" style="padding-right: 50%; ">
+        <table class="col-12" width="50%" style="padding-right: 50%; ">
             <!--tabla de contenidos-->
             <thead>
                 <tr>
