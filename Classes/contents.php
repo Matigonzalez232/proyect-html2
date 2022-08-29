@@ -4,12 +4,6 @@ include_once dirname(__DIR__, 1) . '/config/database.php';
 class Contents
 {
    
-    public $title;
-    public $content;
-    public $keywords;
-    public $description;
-    public $category;
-
     function __construct()
     {
         //    $this->create('pala','paleador');//53min usa los archivos para que te lleguen?
@@ -24,7 +18,7 @@ class Contents
         try {
             $query->execute($item);
 
-            return  $query->fetchAll();
+            return  true;
         } catch (PDOException $e) {
             return false;
         }

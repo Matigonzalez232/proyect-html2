@@ -6,13 +6,34 @@ $contents = new Contents();
 $placehold = $contents->view($_GET['id']);
 if (isset($_POST['title'])) {
 
-    $contents->update($_GET['id'], $_POST); //
+    if ($contents->update($_GET['id'], $_POST)) {
+?>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col">
+                    <h1>Actualizado con exito</h1>
+                </div>
+            </div>
+        </div>
 
+    <?php
+    } else {
+    ?>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col">
+                    <h1>Fallo al actualizar</h1>
+                </div>
+            </div>
+        </div>
+
+<?php
+    }
 }
 
 ?>
-<div class="container">
-    <div class="row">
+<div class="container my-3">
+    <div class="row ">
         <div class="col">
             <h3> Modificar contenido <?php echo $_GET['id']; ?> </h3>
         </div>
