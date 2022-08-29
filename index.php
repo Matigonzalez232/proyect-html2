@@ -55,7 +55,7 @@
 
     <div class="container pb-3">
         <div class="row card-grande">
-            <div class="col-md-5 col-12">
+            <div class="col-md-5 px-0 col-12">
                 <img src="assets/img/Imagen 6.png" alt="">
             </div>
             <div class="col-md-7 col-12 c-g-texto">

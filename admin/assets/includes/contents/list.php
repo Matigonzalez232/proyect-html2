@@ -37,6 +37,6 @@
 
             </tbody>
         </table>
-        <a class="btn btn-primary col-3 m-5 " href="https://server.com/tutoriales-mati/proyect-html2/admin/crear.php">nuevo</a>
+        <a class="btn btn-primary col-2 m-5 " href="https://server.com/tutoriales-mati/proyect-html2/admin/crear.php">nuevo</a>
     </div>
 </div>
