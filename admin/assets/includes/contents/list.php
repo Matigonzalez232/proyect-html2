@@ -29,8 +29,9 @@
                         <td><?php echo  $content['id']; ?></td>
                         <td><?php echo $content['title']; ?></td>
                         <td><?php echo $content['content']; ?></td>
-                        <td> <a href="https://server.com/tutoriales-mati/proyect-html2/admin/?id=<?php echo $content['id']; ?>">delete</a></td>
-                        <td> <a href="https://server.com/tutoriales-mati/proyect-html2/admin/modificar.php?id=<?php echo $content['id']; ?>">update</a></td>
+                        <td> <a href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/ver.php?id=<?php echo $content['id']; ?>">view</a></td>
+                        <td> <a href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/?id=<?php echo $content['id']; ?>">delete</a></td>
+                        <td> <a href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar.php?id=<?php echo $content['id']; ?>">update</a></td>
                     </tr>
 
                 <?php
@@ -39,6 +40,6 @@
 
             </tbody>
         </table>
-        <a class="btn btn-primary col-2 m-5 " href="https://server.com/tutoriales-mati/proyect-html2/admin/crear.php">nuevo</a>
+        <a class="btn btn-primary col-2 m-5 " href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear.php">nuevo</a>
     </div>
 </div>

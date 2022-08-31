@@ -1,8 +1,11 @@
 <?php
-include_once 'assets/includes/header.php';
-include_once __DIR__ . '/assets/includes/nav.inc.php';
-include_once dirname(__DIR__, 1) . '/Classes/images.php';
+include_once dirname(__DIR__, 4) . '/Classes/images.php';
 $image = new images;
+if (isset($_GET['id'])) {
+
+    $contents = $image->list($_GET['id']);
+
+}
 
 ?>
 <div class="container">
@@ -21,14 +24,14 @@ $image = new images;
             <tbody>
                 <?php
 
-                foreach ($image->list() as $content) {
+                foreach ($contents as $content) {
                 ?>
                     <tr>
                         <td><?php echo  $content['id']; ?></td>
                         <td><?php echo $content['url']; ?></td>
                         <td><?php echo $content['content']; ?></td>
-                        <td> <a href="https://server.com/tutoriales-mati/proyect-html2/admin/?id=<?php echo $content['id']; ?>">delete</a></td>
-                        <td> <a href="https://server.com/tutoriales-mati/proyect-html2/admin/modificar.php?id=<?php echo $content['id']; ?>">update</a></td>
+                        <td> <a href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/?id=<?php echo $content['id']; ?>">delete</a></td>
+                        <td> <a href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar.php?id=<?php echo $content['id']; ?>">update</a></td>
                     </tr>
 
                 <?php
@@ -39,4 +42,3 @@ $image = new images;
         </table>
     </div>
 </div>
-<?php include_once 'assets/includes/footer.php'; ?>
