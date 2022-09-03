@@ -61,7 +61,7 @@ class Images
 
     function list($id) //
     {
-        $query = $this->db->connect()->query('SELECT * FROM images WHERE content = :id');
+        $query = $this->db->connect()->prepare('SELECT * FROM images WHERE content = :id');
         try {
             $query->execute(['id'=>$id]);
             return  $query->fetchAll();
