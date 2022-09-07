@@ -8,6 +8,7 @@ class Contents
     {
         //    $this->create('pala','paleador');//53min usa los archivos para que te lleguen?
         $this->db = new DB();
+        
     }
     function create($item)
     {

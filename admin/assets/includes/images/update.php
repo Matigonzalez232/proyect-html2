@@ -1,4 +1,6 @@
 <?php
+include_once 'assets/includes/header.php';
+include_once __DIR__. '/assets/includes/nav.inc.php';
 
 include_once dirname(__DIR__, 4) . '/Classes/contents.php';
 include_once dirname(__DIR__, 4) . '/Classes/images.php';
@@ -70,3 +72,4 @@ if (isset($_POST['title'])) {
         </div>
     </div>
 </div>
+<?php include_once 'assets/includes/footer.php';?>

@@ -22,18 +22,18 @@ class Images
     //         return false;
     //     }
     // }
-    // function delete($id)
-    // {
-    //     $query = $this->db->connect()->prepare('DELETE FROM contents WHERE id=:id');
+    function delete($id)
+    {
+        $query = $this->db->connect()->prepare('DELETE FROM images WHERE id=:id');
 
-    //     try {
-    //         $query->execute(['id'=>$id] );
+        try {
+            $query->execute(['id'=>$id] );
 
-    //         return  $query->fetchAll();
-    //     } catch (PDOException $e) {
-    //         return false;
-    //     }
-    // }
+            return  $query->fetchAll();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
     // function update($id,$item)
     // {
 
