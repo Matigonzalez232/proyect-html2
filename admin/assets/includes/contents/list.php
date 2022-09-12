@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row mt-5">
         <?php
-         include_once dirname(__DIR__, 4) . '/Classes/contents.php';
-         $contents = new Contents;
+        include_once dirname(__DIR__, 4) . '/Classes/contents.php';
+        $contents = new Contents;
         if (isset($_GET['id'])) {
 
             $contents->delete($_GET['id']); //
@@ -12,9 +12,9 @@
         <table class="col-12" width="50%" style="padding-right: 50%; ">
             <!--tabla de contenidos-->
             <thead>
-            
-               
-            <tr>
+
+
+                <tr>
                     <th>Id</th>
                     <th>Title</th>
                     <th>Content</th>
@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <?php
-               
+
                 foreach ($contents->list() as $content) {
                 ?>
                     <tr>

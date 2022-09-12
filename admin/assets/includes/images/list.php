@@ -7,11 +7,9 @@
             if (isset($_GET['id'])) {
 
                 $image->delete($_GET['id']); //
-                echo "delete";
+                
             }
-            echo "content";
             $contents = $image->list($_GET['content']);
-           
         }
 
         ?>
@@ -33,10 +31,10 @@
                 ?>
                     <tr>
                         <td><?php echo  $content['id']; ?></td>
-                        <td><?php echo $content['url']; ?></td>
+                        <td><img src="/proyecto-html-bootstrap_desafio2/<?php echo $content['url']; ?>" alt=""><?php echo $content['url']; ?></td>
                         <td><?php echo $content['content']; ?></td>
                         <td> <a href="ver.php?class=images&action=list&id=<?php echo $content['id']; ?>&content=<?php echo $_GET['content']; ?>">delete</a></td>
-                        <td> <a href="update.php?class=images&id=<?php echo $content['id']; ?>">update</a></td>
+                        <td> <a href="modificar_img.php?class=images&action=update&id=<?php echo $content['id']; ?>">update</a></td>
                     </tr>
 
                 <?php
@@ -45,5 +43,6 @@
 
             </tbody>
         </table>
+        <a class="btn btn-primary col-2 m-5 " href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear_img.php?content=<?php echo $_GET['content']; ?>">nuevo</a>
     </div>
 </div>

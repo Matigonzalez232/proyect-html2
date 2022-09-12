@@ -61,7 +61,7 @@ if (isset($_POST['title'])) {
                     <input type="text" id="title" name="category" class="form-control">
                 </div>
                 <div class="col mt-4">
-                    <button type="submit" class="btn ">Registrar</button>
+                    <button type="submit" class="btn ">Crear</button>
                 </div>
 
             </form>

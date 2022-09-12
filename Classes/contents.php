@@ -3,12 +3,11 @@ include_once dirname(__DIR__, 1) . '/config/database.php';
 
 class Contents
 {
-   
+
     function __construct()
     {
         //    $this->create('pala','paleador');//53min usa los archivos para que te lleguen?
         $this->db = new DB();
-        
     }
     function create($item)
     {
@@ -29,20 +28,20 @@ class Contents
         $query = $this->db->connect()->prepare('DELETE FROM contents WHERE id=:id');
 
         try {
-            $query->execute(['id'=>$id] );
+            $query->execute(['id' => $id]);
 
             return  $query->fetchAll();
         } catch (PDOException $e) {
             return false;
         }
     }
-    function update($id,$item)
+    function update($id, $item)
     {
-            
+
         $query = $this->db->connect()->prepare('UPDATE contents SET title=:title,  content=:content, keywords=:keywords, description=:description, category=:category   WHERE id = :id');
-       
+
         $item['id'] = $id;
-      
+
         try {
             $query->execute($item);
             return  true;
@@ -54,13 +53,13 @@ class Contents
     {
         $query = $this->db->connect()->prepare('SELECT * FROM contents WHERE id = :id');
         try {
-            $query->execute(['id'=>$id]);
+            $query->execute(['id' => $id]);
             return  $query->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return false;
         }
     }
-    
+
     function list()
     {
         $query = $this->db->connect()->query('SELECT * FROM contents');

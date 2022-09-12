@@ -1,14 +1,14 @@
 <?php
-include_once 'assets/includes/header.php';
-include_once __DIR__. '/assets/includes/nav.inc.php';
 
-include_once dirname(__DIR__, 4) . '/Classes/contents.php';
 include_once dirname(__DIR__, 4) . '/Classes/images.php';
-$contents = new Contents();
-$placehold = $contents->view($_GET['id']);
-if (isset($_POST['title'])) {
+$image = new Images();
+$placehold = $image->view($_GET['id']);
 
-    if ($contents->update($_GET['id'], $_POST)) {
+if (isset($_FILES['img'])) {
+    $directorio = "assets/img/";
+    $archivo = $directorio . basename($_FILES['img']['name']);
+    
+    if ($image->update($_GET['id'], $archivo)) {
 ?>
         <div class="container">
             <div class="row mt-3">
@@ -37,34 +37,19 @@ if (isset($_POST['title'])) {
 <div class="container my-3">
     <div class="row ">
         <div class="col">
-            <h3> Modificar contenido <?php echo $_GET['id']; ?> </h3>
+            <h3> Modificar imagen <?php echo $_GET['id']; ?> </h3>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <form class="row g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar_img.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 
-                <div class="col-md-4">
-                    <label for="title" class="form-laber ">title</label>
-                    <input type="text" id="title" name="title" class="form-control" value="<?php echo $placehold['title']; ?>" required>
+                <div class="col-md-4 mt-4">
+
+                    <input type="file" id="img" name="img" class="form-control" required>
                 </div>
-                <div class="col-md-8">
-                    <label for="cont" class="form-laber ">content</label>
-                    <input type="text" id="cont" name="content" class="form-control" value="<?php echo $placehold['content']; ?>" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="title" class="form-laber ">keywords</label>
-                    <input type="text" id="title" name="keywords" class="form-control" value="<?php echo $placehold['keywords']; ?>">
-                </div>
-                <div class="col-md-8">
-                    <label for="cont" class="form-laber ">description</label>
-                    <input type="text" id="cont" name="description" class="form-control" value="<?php echo $placehold['description']; ?>">
-                </div>
-                <div class="col-md-2">
-                    <label for="title" class="form-laber ">category</label>
-                    <input type="text" id="title" name="category" class="form-control" value="<?php echo $placehold['category']; ?>">
-                </div>
-                <div class="col">
+
+                <div class="col mt-4">
                     <button type="submit" class="btn ">Actualizar</button>
                 </div>
 
@@ -72,4 +57,3 @@ if (isset($_POST['title'])) {
         </div>
     </div>
 </div>
-<?php include_once 'assets/includes/footer.php';?>

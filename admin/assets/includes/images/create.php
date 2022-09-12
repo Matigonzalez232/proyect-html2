@@ -1,16 +1,18 @@
 <?php
 
-include_once dirname(__DIR__, 4) . '/Classes/contents.php';
+include_once dirname(__DIR__, 4) . '/Classes/images.php';
 
-$content = new Contents();
-if (isset($_POST['title'])) {
+$image = new Images();
+if (isset($_FILES['img'])) {
+    $directorio = "assets/img/";
+    $archivo = $directorio . basename($_FILES['img']['name']);
 
-    if ($content->create($_POST)) {
+    if ($image->create($archivo, $_GET['content'])) {
 ?>
         <div class="container">
             <div class="row mt-3">
                 <div class="col">
-                    <h1>creado con exito</h1>
+                    <h1>creada con exito</h1>
                 </div>
             </div>
         </div>
@@ -33,35 +35,20 @@ if (isset($_POST['title'])) {
 <div class="container">
     <div class="row mt-4">
         <div class="col">
-            <h3>Nuevo contenido</h3>
+            <h3>Nueva imagen</h3>
         </div>
     </div>
     <div class="row mb-4">
         <div class="col">
-            <form class="row  g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear.php" method="post">
+            <form class="row  g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear_img.php?content=<?php echo $_GET['content']; ?>" method="post" enctype="multipart/form-data">
 
-                <div class="col-md-4">
-                    <label for="title" class="form-laber ">title</label>
-                    <input type="text" id="title" name="title" class="form-control" required>
+                <div class="col-md-4 mt-4">
+
+                    <input type="file" id="img" name="img" class="form-control" required>
                 </div>
-                <div class="col-md-8">
-                    <label for="cont" class="form-laber ">content</label>
-                    <input type="text" id="cont" name="content" class="form-control" required>
-                </div>
-                <div class="col-md-2">
-                    <label for="title" class="form-laber ">keywords</label>
-                    <input type="text" id="title" name="keywords" class="form-control">
-                </div>
-                <div class="col-md-8">
-                    <label for="cont" class="form-laber ">description</label>
-                    <input type="text" id="cont" name="description" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="title" class="form-laber ">category</label>
-                    <input type="text" id="title" name="category" class="form-control">
-                </div>
+
                 <div class="col mt-4">
-                    <button type="submit" class="btn ">Registrar</button>
+                    <button type="submit" class="btn ">Crear</button>
                 </div>
 
             </form>
