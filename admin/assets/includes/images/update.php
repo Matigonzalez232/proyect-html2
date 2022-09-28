@@ -42,7 +42,7 @@ if (isset($_FILES['img'])) {
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar_img.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+            <form class="row g-3" action="http://server.com/pil/proyect-html2/admin/modificar_img.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <div class="col-md-4 mt-4">
 

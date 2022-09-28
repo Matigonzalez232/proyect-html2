@@ -1,11 +1,14 @@
 <?php
 
 include_once dirname(__DIR__, 4) . '/Classes/contents.php';
-
+include_once dirname(__DIR__, 4) . '/Classes/images.php';
 $content = new Contents();
-if (isset($_POST['title'])) {
+$image = new Images();
 
-    if ($content->create($_POST)) {
+if (isset($_POST['title']) && isset($_FILES['img'])) {
+    $directorio = "assets/img/uploads/";
+    $archivo = $directorio . basename($_FILES['img']['name']);
+    if ($content->create($_POST) && $image->create($archivo, $_GET['content']) && move_uploaded_file($_FILES['img']['tmp_name'],$archivo)) {
 ?>
         <div class="container">
             <div class="row mt-3">
@@ -38,7 +41,7 @@ if (isset($_POST['title'])) {
     </div>
     <div class="row mb-4">
         <div class="col">
-            <form class="row  g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear.php" method="post">
+            <form class="row  g-3" action="http://server.com/pil/proyect-html2/admin/crear.php?content=<?php echo $_GET['content']+1; ?>"  enctype="multipart/form-data" method="post">
 
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>
@@ -60,6 +63,12 @@ if (isset($_POST['title'])) {
                     <label for="title" class="form-laber ">category</label>
                     <input type="text" id="title" name="category" class="form-control">
                 </div>
+
+                <div class="col-md-4 mt-4">
+
+                    <input type="file" id="img" name="img" class="form-control" required>
+                </div>
+
                 <div class="col mt-4">
                     <button type="submit" class="btn ">Crear</button>
                 </div>

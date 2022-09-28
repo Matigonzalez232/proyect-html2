@@ -4,11 +4,11 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/">INICIO</a>
+                    <a class="nav-link active" aria-current="page" href="http://server.com/pil/proyect-html2/admin/">INICIO</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear.php">NUEVO</a>
+                    <a class="nav-link " href="http://server.com/pil/proyect-html2/admin/crear.php">NUEVO</a>
                 </li>
             </ul>
         </div>

@@ -4,10 +4,11 @@ include_once dirname(__DIR__, 4) . '/Classes/images.php';
 
 $image = new Images();
 if (isset($_FILES['img'])) {
-    $directorio = "assets/img/";
+    $directorio = "assets/img/uploads/";
     $archivo = $directorio . basename($_FILES['img']['name']);
 
-    if ($image->create($archivo, $_GET['content'])) {
+    if ($image->create($archivo, $_GET['content']) && move_uploaded_file($_FILES['img']['tmp_name'],$archivo)) {
+        
 ?>
         <div class="container">
             <div class="row mt-3">
@@ -40,7 +41,7 @@ if (isset($_FILES['img'])) {
     </div>
     <div class="row mb-4">
         <div class="col">
-            <form class="row  g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/crear_img.php?content=<?php echo $_GET['content']; ?>" method="post" enctype="multipart/form-data">
+            <form class="row  g-3" action="http://server.com/pil/proyect-html2/admin/crear_img.php?content=<?php echo $_GET['content']; ?>" method="post" enctype="multipart/form-data">
 
                 <div class="col-md-4 mt-4">
 

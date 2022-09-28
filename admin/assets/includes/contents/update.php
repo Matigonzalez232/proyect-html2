@@ -4,10 +4,11 @@ include_once dirname(__DIR__, 4) . '/Classes/contents.php';
 include_once dirname(__DIR__, 4) . '/Classes/images.php';
 $contents = new Contents();
 $placehold = $contents->view($_GET['id']);
+$image = new images;
 if (isset($_POST['title'])) {
 
     if ($contents->update($_GET['id'], $_POST)) {
-?>
+    ?>
         <div class="container">
             <div class="row mt-3">
                 <div class="col">
@@ -31,7 +32,34 @@ if (isset($_POST['title'])) {
     }
 }
 
+
+if (isset($_GET['id'])) {
+    if (isset($_GET['img'])) {
+
+        $image->delete($_GET['img']); //
+
+    }
+    $lista = $image->list($_GET['id']);
+}
+if (isset($_FILES['img'])) {
+    $directorio = "assets/img/uploads/";
+    $archivo = $directorio . basename($_FILES['img']['name']);
+    if ($image->create($archivo, $_GET['id']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
 ?>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col">
+                    <h1>Actualizado con exito</h1>
+  
+                </div>
+            </div>
+        </div>
+
+    <?php
+    }
+}
+?>
+
 <div class="container my-3">
     <div class="row ">
         <div class="col">
@@ -40,7 +68,7 @@ if (isset($_POST['title'])) {
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="http://localhost/curso/proyecto-html-bootstrap_desafio2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <form class="row g-3" action="http://server.com/pil/proyect-html2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
 
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>
@@ -62,11 +90,38 @@ if (isset($_POST['title'])) {
                     <label for="title" class="form-laber ">category</label>
                     <input type="text" id="title" name="category" class="form-control" value="<?php echo $placehold['category']; ?>">
                 </div>
+
                 <div class="col">
                     <button type="submit" class="btn ">Actualizar</button>
                 </div>
 
             </form>
+            <form class="row g-3" action="http://server.com/pil/proyect-html2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+                <div class="col-md-4 mt-4">
+                    <input type="file" id="img" name="img" class="form-control">
+                   
+                </div>
+                 <div class="col mt-4">
+                    <button type="submit" class="btn ">Agregar</button>
+                </div>
+            </form>
+            <div class="container mt-4">
+                <div class="row">
+                    <?php
+                    foreach ($lista as $content) {
+                    ?>
+                        <div class="card col-4" style="width: 18rem;">
+                            <img class="card-img-top" src="<?= URL ?>/admin/<?= $content['url']; ?>" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="modificar.php?class=images&action=list&img=<?php echo $content['id']; ?>&id=<?php echo $_GET['id']; ?>" class="btn btn-primary">delete</a>
+                            </div>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
