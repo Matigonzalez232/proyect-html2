@@ -1,39 +1,39 @@
 <?php
 
-include_once dirname(__DIR__, 4) . '/Classes/images.php';
+// include_once dirname(__DIR__, 4) . '/Classes/images.php';
 
-$image = new Images();
-if (isset($_FILES['img'])) {
-    $directorio = "assets/img/uploads/";
-    $archivo = $directorio . basename($_FILES['img']['name']);
+// $image = new Images();
+// if (isset($_FILES['img'])) {
+//     $directorio = "assets/img/uploads/";
+//     $archivo = $directorio . basename($_FILES['img']['name']);
 
-    if ($image->create($archivo, $_GET['content']) && move_uploaded_file($_FILES['img']['tmp_name'],$archivo)) {
+//     if ($image->create($archivo, $_GET['content']) && move_uploaded_file($_FILES['img']['tmp_name'],$archivo)) {
         
 ?>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row mt-3">
                 <div class="col">
                     <h1>creada con exito</h1>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     <?php
-    } else {
+    // } else {
     ?>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row mt-3">
                 <div class="col">
                     <h1>fallo al crear</h1>
                 </div>
             </div>
-        </div>
+        </div> -->
 <?php
-    }
-}
+//     }
+// }
 
 ?>
-<div class="container">
+<!-- <div class="container">
     <div class="row mt-4">
         <div class="col">
             <h3>Nueva imagen</h3>
@@ -55,7 +55,7 @@ if (isset($_FILES['img'])) {
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <?php
 
 

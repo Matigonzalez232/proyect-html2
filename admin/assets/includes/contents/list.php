@@ -29,7 +29,6 @@
                         <td><?php echo  $content['id']; ?></td>
                         <td><?php echo $content['title']; ?></td>
                         <td><?php echo $content['content']; ?></td>
-                        <td> <a href="ver.php?content=<?= $content['id']; ?>">view</a></td>
                         <td> <a href="?id=<?= $content['id']; ?>">delete</a></td>
                         <td> <a href="modificar.php?id=<?= $content['id']; ?>">update</a></td>
                     </tr>

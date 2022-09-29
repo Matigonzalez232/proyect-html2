@@ -1,14 +1,14 @@
-<?php
+<!-- <?php
 
-include_once dirname(__DIR__, 4) . '/Classes/images.php';
-$image = new Images();
-$placehold = $image->view($_GET['id']);
+// include_once dirname(__DIR__, 4) . '/Classes/images.php';
+// $image = new Images();
+// $placehold = $image->view($_GET['id']);
 
-if (isset($_FILES['img'])) {
-    $directorio = "assets/img/";
-    $archivo = $directorio . basename($_FILES['img']['name']);
+// if (isset($_FILES['img'])) {
+//     $directorio = "assets/img/";
+//     $archivo = $directorio . basename($_FILES['img']['name']);
     
-    if ($image->update($_GET['id'], $archivo)) {
+//     if ($image->update($_GET['id'], $archivo)) {
 ?>
         <div class="container">
             <div class="row mt-3">
@@ -19,7 +19,7 @@ if (isset($_FILES['img'])) {
         </div>
 
     <?php
-    } else {
+    // } else {
     ?>
         <div class="container">
             <div class="row mt-3">
@@ -30,8 +30,8 @@ if (isset($_FILES['img'])) {
         </div>
 
 <?php
-    }
-}
+//     }
+// }
 
 ?>
 <div class="container my-3">
@@ -56,4 +56,4 @@ if (isset($_FILES['img'])) {
             </form>
         </div>
     </div>
-</div>
+</div> -->

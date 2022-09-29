@@ -3,12 +3,11 @@
 include_once dirname(__DIR__, 4) . '/Classes/contents.php';
 include_once dirname(__DIR__, 4) . '/Classes/images.php';
 $contents = new Contents();
-$placehold = $contents->view($_GET['id']);
 $image = new images;
 if (isset($_POST['title'])) {
 
     if ($contents->update($_GET['id'], $_POST)) {
-    ?>
+?>
         <div class="container">
             <div class="row mt-3">
                 <div class="col">
@@ -28,35 +27,39 @@ if (isset($_POST['title'])) {
             </div>
         </div>
 
-<?php
+    <?php
     }
 }
+$placehold = $contents->view($_GET['id']);
 
 
-if (isset($_GET['id'])) {
-    if (isset($_GET['img'])) {
-
-        $image->delete($_GET['img']); //
-
-    }
-    $lista = $image->list($_GET['id']);
-}
-if (isset($_FILES['img'])) {
+if (isset($_FILES['img']) && ($_FILES['img']['size'] > 0 && ($_FILES['img']['type'] == "image/jpeg") || $_FILES['img']['type'] == "image/png")) {
     $directorio = "assets/img/uploads/";
+    $new_name=  time() . $_FILES['img']['name'];
+    $_FILES['img']['name']=$new_name;
     $archivo = $directorio . basename($_FILES['img']['name']);
+    
     if ($image->create($archivo, $_GET['id']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
-?>
+    ?>
         <div class="container">
             <div class="row mt-3">
                 <div class="col">
                     <h1>Actualizado con exito</h1>
-  
+
                 </div>
             </div>
         </div>
 
-    <?php
+<?php
+
     }
+}
+if (isset($_GET['id'])) { 
+    if (isset($_GET['img'])) {
+
+        $image->delete($_GET['img']);
+    }
+    $lista = $image->list($_GET['id']);
 }
 ?>
 
@@ -68,7 +71,7 @@ if (isset($_FILES['img'])) {
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="http://server.com/pil/proyect-html2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <form class="row g-3" action="<?= URL?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
 
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>
@@ -96,12 +99,12 @@ if (isset($_FILES['img'])) {
                 </div>
 
             </form>
-            <form class="row g-3" action="http://server.com/pil/proyect-html2/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <form class="row g-3" action="<?= URL?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" enctype="multipart/form-data" method="post">
                 <div class="col-md-4 mt-4">
                     <input type="file" id="img" name="img" class="form-control">
-                   
+
                 </div>
-                 <div class="col mt-4">
+                <div class="col mt-4">
                     <button type="submit" class="btn ">Agregar</button>
                 </div>
             </form>

@@ -51,7 +51,7 @@
 
 
 
-    
+    <!-- arreglar las cards -->
 
     <div class="container pb-3">
         <div class="row card-grande">
@@ -71,8 +71,8 @@
         </div>
 
         <div class="row mr-5 cards" id="cards-arriba">
-            <div class="col-md-4  col-sm-6">
-                <div class="card h-100">
+            <div class="col-md-4  col-12">
+                <div class="card h-100 " style="width: 18rem;">
                     <img src="assets/img/Imagen 3.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio 1</h5>
@@ -82,8 +82,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100">
+            <div class="col-md-4 ">
+                <div class="card h-100" style="width: 18rem;">
                     <img src="assets/img/Enmascarar grupo 1.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio 1</h5>
@@ -93,8 +93,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 ">
-                <div class="card h-100">
+            <div class="col-md-4  ">
+                <div class="card h-100" style="width: 18rem;">
                     <img src="assets/img/Imagen 5.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio 1</h5>

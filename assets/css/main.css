@@ -53,9 +53,8 @@ h5 {
 .card-grande {
     margin-top: 4em;
     margin-bottom: 3em;
-    width: 91%;
     height: auto;
-    margin-left: 3em;
+    
 }
 
 .card-grande .c-g-texto {
@@ -115,4 +114,12 @@ h5 {
     background-color: #E74F11;
     text-align: left;
 
+}
+@media screen and (max-width: 1000px) {
+.cards {
+    display: flex;
+    justify-content: center !important;
+    padding-left: 3em;
+    padding-bottom: 4em;
+}
 }

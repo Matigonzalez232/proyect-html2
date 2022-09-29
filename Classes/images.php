@@ -22,18 +22,7 @@ class Images
             return false;
         }
     }
-    function delete($id)
-    {
-        $query = $this->db->connect()->prepare('DELETE FROM images WHERE id=:id');
-
-        try {
-            $query->execute(['id' => $id]);
-
-            return  $query->fetchAll();
-        } catch (PDOException $e) {
-            return false;
-        }
-    }
+    
     function update($id,$url )
     {
 
@@ -50,7 +39,7 @@ class Images
     }
     function view($id)
     {
-        $query = $this->db->connect()->prepare('SELECT * FROM contents WHERE id = :id');
+        $query = $this->db->connect()->prepare('SELECT * FROM images WHERE id = :id');
         try {
             $query->execute(['id'=>$id]);
             return  $query->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +47,24 @@ class Images
             return false;
         }
     }
+function delete($id)
+    {
+        var_dump($imagen=$this->view($id));
+        if (unlink($imagen['url'])){
+            $query = $this->db->connect()->prepare('DELETE FROM images WHERE id=:id');
 
+            try {
+                $query->execute(['id' => $id]);
+    
+                return  $query->fetchAll();
+            } catch (PDOException $e) {
+                return false;
+            }
+        }else {
+            echo "falso";
+        }
+       
+    }
     function list($id) //
     {
         $query = $this->db->connect()->prepare('SELECT * FROM images WHERE content = :id');

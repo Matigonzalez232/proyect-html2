@@ -1,5 +1,5 @@
 <html lang="en">
-
+<?php define('URL','http://server.com/pil/proyect-html2') ?>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
