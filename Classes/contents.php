@@ -1,20 +1,22 @@
 <?php
 include_once dirname(__DIR__, 1) . '/config/database.php';
+//include de imagenes
 
 class Contents
 {
 
     function __construct()
     {
-        //    $this->create('pala','paleador');//53min usa los archivos para que te lleguen?
         $this->db = new DB();
+        //generar objeto imagen
     }
-    function create($item)
+    function create($item,$id)
     {
 
 
-        $query = $this->db->connect()->prepare('INSERT INTO contents (title , content, keywords, description, category ) VALUES (:title, :content, :keywords, :description, :category)');
-
+        $query = $this->db->connect()->prepare('INSERT INTO contents (id, title , content, keywords, description, category ) VALUES (:id, :title, :content, :keywords, :description, :category)');
+        $item['id'] = $id;
+        var_dump($item);
         try {
             $query->execute($item);
 
@@ -35,7 +37,7 @@ class Contents
             return false;
         }
     }
-    function update($id, $item)
+    function update($id, $item)//revisar bien que ande
     {
 
         $query = $this->db->connect()->prepare('UPDATE contents SET title=:title,  content=:content, keywords=:keywords, description=:description, category=:category   WHERE id = :id');
@@ -60,9 +62,13 @@ class Contents
         }
     }
 
-    function list()
+    function list() //se puede mejorar
     {
         $query = $this->db->connect()->query('SELECT * FROM contents');
-        return  $query->fetchAll();
+        //imagenes->list(codContenido)
+        $array = $query->fetchAll();
+        //a array sumale el array de imagenes 
+
+        // return  $array;
     }
 }

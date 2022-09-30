@@ -1,7 +1,7 @@
 <?php
 include_once dirname(__DIR__, 1) . '/config/database.php';
 
-class Images
+class Images //relacionarlas a traves de un code de la bd
 {
 
     function __construct()
@@ -22,16 +22,16 @@ class Images
             return false;
         }
     }
-    
-    function update($id,$url )
+
+    function update($id, $url)
     {
 
         $query = $this->db->connect()->prepare('UPDATE images SET url=:url WHERE id = :id');
 
-        
+
 
         try {
-            $query->execute(['id'=>$id,'url'=>$url]);
+            $query->execute(['id' => $id, 'url' => $url]);
             return  true;
         } catch (PDOException $e) {
             return false;
@@ -41,29 +41,28 @@ class Images
     {
         $query = $this->db->connect()->prepare('SELECT * FROM images WHERE id = :id');
         try {
-            $query->execute(['id'=>$id]);
+            $query->execute(['id' => $id]);
             return  $query->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return false;
         }
     }
-function delete($id)
+    function delete($id)
     {
-        var_dump($imagen=$this->view($id));
-        if (unlink($imagen['url'])){
+        var_dump($imagen = $this->view($id));
+        if (unlink($imagen['url'])) {
             $query = $this->db->connect()->prepare('DELETE FROM images WHERE id=:id');
 
             try {
                 $query->execute(['id' => $id]);
-    
+
                 return  $query->fetchAll();
             } catch (PDOException $e) {
                 return false;
             }
-        }else {
+        } else {
             echo "falso";
         }
-       
     }
     function list($id) //
     {
@@ -76,3 +75,4 @@ function delete($id)
         }
     }
 }
+

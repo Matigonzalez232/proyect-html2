@@ -1,27 +1,8 @@
 <html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css?ts=<?= time() ?>" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <title>proyecto-html</title>
-</head>
+<?php include_once 'assets/includes/header.php'; ?>
 
 <body>
 
-
-
-    <header>
-        <div class=" container-fluid footer-header text-center">
-
-            <img src="assets/img/Imagen 1.png" alt="logo">
-
-        </div>
-    </header>
     <?php
     include_once 'assets/includes/nav.inc.php';
     ?>
@@ -51,7 +32,6 @@
 
 
 
-    <!-- arreglar las cards -->
 
     <div class="container pb-3">
         <div class="row card-grande">
@@ -83,7 +63,7 @@
                 </div>
             </div>
             <div class="col-md-4 ">
-                <div class="card h-100" style="width: 18rem;">
+                <div class="card h-100" style="width: 18rem; ">
                     <img src="assets/img/Enmascarar grupo 1.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio 1</h5>
@@ -94,7 +74,7 @@
                 </div>
             </div>
             <div class="col-md-4  ">
-                <div class="card h-100" style="width: 18rem;">
+                <div class="card h-100" style="width: 18rem; ">
                     <img src="assets/img/Imagen 5.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio 1</h5>
@@ -104,6 +84,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

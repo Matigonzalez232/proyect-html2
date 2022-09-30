@@ -38,7 +38,14 @@
                 ?>
 
             </tbody>
+
         </table>
-        <a class="btn btn-primary col-2 m-5 " href="crear.php?content=<?= $content['id']; ?>">nuevo</a>
+        <?php if ($contents->list() != NULL) {
+        ?><a class="btn btn-primary col-2 m-5 " href="crear.php?content=<?= $content['id']; ?>">nuevo</a>
+
+        <?php } else { ?>
+            <a class="btn btn-primary col-2 m-5 " href="crear.php?content=0">nuevo</a>
+        <?php } ?>
+
     </div>
 </div>
