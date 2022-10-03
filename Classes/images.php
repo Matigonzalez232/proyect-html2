@@ -44,7 +44,7 @@ class Images //relacionarlas a traves de un code de la bd
             $query->execute(['id' => $id]);
             return  $query->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            return false;
+            return [];
         }
     }
     function delete($id)
@@ -56,7 +56,7 @@ class Images //relacionarlas a traves de un code de la bd
             try {
                 $query->execute(['id' => $id]);
 
-                return  $query->fetchAll();
+                return  $query->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 return false;
             }
@@ -64,15 +64,14 @@ class Images //relacionarlas a traves de un code de la bd
             echo "falso";
         }
     }
-    function list($id) //
+    function list($cod)
     {
-        $query = $this->db->connect()->prepare('SELECT * FROM images WHERE content = :id');
+        $query = $this->db->connect()->prepare('SELECT * FROM images WHERE content = :cod');
         try {
-            $query->execute(['id' => $id]);
-            return  $query->fetchAll();
+            $query->execute(['cod' => $cod]);
+            return  $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return false;
         }
     }
 }
-

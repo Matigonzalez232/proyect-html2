@@ -1,6 +1,6 @@
 <?php
 include_once dirname(__DIR__, 1) . '/config/database.php';
-//include de imagenes
+include_once 'images.php';
 
 class Contents
 {
@@ -8,14 +8,13 @@ class Contents
     function __construct()
     {
         $this->db = new DB();
-        //generar objeto imagen
+        $this->imagen = new Images;
     }
-    function create($item,$id)
+    function create($item)
     {
 
 
-        $query = $this->db->connect()->prepare('INSERT INTO contents (id, title , content, keywords, description, category ) VALUES (:id, :title, :content, :keywords, :description, :category)');
-        $item['id'] = $id;
+        $query = $this->db->connect()->prepare('INSERT INTO contents (cod, title, content, keywords, description, category ) VALUES (:cod, :title, :content, :keywords, :description, :category)');
         var_dump($item);
         try {
             $query->execute($item);
@@ -37,7 +36,7 @@ class Contents
             return false;
         }
     }
-    function update($id, $item)//revisar bien que ande
+    function update($id, $item) //revisar bien que ande
     {
 
         $query = $this->db->connect()->prepare('UPDATE contents SET title=:title,  content=:content, keywords=:keywords, description=:description, category=:category   WHERE id = :id');
@@ -58,17 +57,21 @@ class Contents
             $query->execute(['id' => $id]);
             return  $query->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            return false;
+            return [];
         }
     }
 
-    function list() //se puede mejorar
+    function list()
     {
+        $items = [];
         $query = $this->db->connect()->query('SELECT * FROM contents');
-        //imagenes->list(codContenido)
-        $array = $query->fetchAll();
-        //a array sumale el array de imagenes 
 
-        // return  $array;
+
+        foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $item) {
+            $item["imagenes"] = $this->imagen->list($item['cod']);;
+            array_push($items, $item);
+        }
+
+        return  $items;
     }
 }

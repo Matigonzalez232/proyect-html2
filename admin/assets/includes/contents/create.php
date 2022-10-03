@@ -6,14 +6,14 @@ $content = new Contents();
 $image = new Images();
 
 if (isset($_POST['title']) && isset($_FILES['img'])) {
-    
-    
-    
+
+
+
     $directorio = "assets/img/uploads/";
-    $new_name=  time() . $_FILES['img']['name'];
-    $_FILES['img']['name']=$new_name;
+    $new_name =  time() . $_FILES['img']['name'];
+    $_FILES['img']['name'] = $new_name;
     $archivo = $directorio . basename($_FILES['img']['name']);
-    if ($content->create($_POST,$_GET['content']) && $image->create($archivo, $_GET['content']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
+    if ($content->create($_POST) && $image->create($archivo, $_POST['cod']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
 ?>
         <div class="container">
             <div class="row mt-3">
@@ -46,10 +46,10 @@ if (isset($_POST['title']) && isset($_FILES['img'])) {
     </div>
     <div class="row mb-4">
         <div class="col">
-            <form class="row  g-3" action="<?= URL?>/admin/crear.php?content=<?php echo $_GET['content'] + 1; ?>" enctype="multipart/form-data" method="post">
-            <div class="col-md-4">
-                    <label for="title" class="form-laber ">title</label>
-                    <input type="text" id="title" name="cod" class="form-control" value="<?= rand(1000,9999) ?>" required>
+            <form class="row  g-3" action="<?= URL ?>/admin/crear.php?content=<?php echo $_GET['content'] + 1; ?>" enctype="multipart/form-data" method="post">
+                <div class="col-md-4">
+                    <label for="title" class="form-laber ">codigo</label>
+                    <input type="text" id="title" name="cod" class="form-control  " value="<?= rand(1000, 9999) ?>" readonly required>
                 </div>
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>

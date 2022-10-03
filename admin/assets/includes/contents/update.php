@@ -27,41 +27,53 @@ if (isset($_POST['title'])) {
             </div>
         </div>
 
-    <?php
+<?php
     }
 }
 $placehold = $contents->view($_GET['id']);
 
+if (isset($_FILES['img'])) { //funciona hasta el if
 
-if (isset($_FILES['img']) && ($_FILES['img']['size'] > 0 && ($_FILES['img']['type'] == "image/jpeg") || $_FILES['img']['type'] == "image/png")) {
-    $directorio = "assets/img/uploads/";
-    $new_name=  time() . $_FILES['img']['name'];
-    $_FILES['img']['name']=$new_name;
-    $archivo = $directorio . basename($_FILES['img']['name']);
-    
-    if ($image->create($archivo, $_GET['id']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
-    ?>
-        <div class="container">
-            <div class="row mt-3">
-                <div class="col">
-                    <h1>Actualizado con exito</h1>
-
-                </div>
-            </div>
-        </div>
-
-<?php
-
+    foreach ($_FILES['img']['tmp_name'] as $key => $tmp_name) {
+        if ($_FILES['img']['size'][$key] > 0 && $_FILES['img']['type'][$key] == "image/jpeg" || $_FILES['img']['type'][$key] == "image/png") {
+            $directorio = "assets/img/uploads/";
+            $new_name =  time() . $_FILES['img']['name'][$key];
+            
+        }
     }
 }
-if (isset($_GET['id'])) { 
-    if (isset($_GET['img'])) {
+// if (isset($_FILES['img']) && ($_FILES['img']['size'] > 0 && ($_FILES['img']['type'] == "image/jpeg") || $_FILES['img']['type'] == "image/png")) {
+//     $directorio = "assets/img/uploads/";
+//     $new_name =  time() . $_FILES['img']['name'];
+//     $_FILES['img']['name'] = $new_name;
+//     $archivo = $directorio . basename($_FILES['img']['name']);
 
-        $image->delete($_GET['img']);
-    }
-    $lista = $image->list($_GET['id']);
-}
+//     if ($image->create($archivo, $placehold['cod']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
+//     
 ?>
+// <div class="container">
+    // <div class="row mt-3">
+        // <div class="col">
+            // <h1>Actualizado con exito</h1>
+
+            // </div>
+        // </div>
+    // </div>
+
+// <?php
+
+    //     }
+    // }
+    if (isset($_GET['id'])) {
+        if (isset($_GET['imgDelete'])) {
+
+            $image->delete($_GET['imgDelete']);
+        }
+        $lista = $image->list($placehold['cod']); //uso el codigo de contenido para listar imagenes
+
+
+    }
+    ?>
 
 <div class="container my-3">
     <div class="row ">
@@ -71,7 +83,7 @@ if (isset($_GET['id'])) {
     </div>
     <div class="row">
         <div class="col">
-            <form class="row g-3" action="<?= URL?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <form class="row g-3" action="<?= URL ?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" method="post">
 
                 <div class="col-md-4">
                     <label for="title" class="form-laber ">title</label>
@@ -99,9 +111,9 @@ if (isset($_GET['id'])) {
                 </div>
 
             </form>
-            <form class="row g-3" action="<?= URL?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" enctype="multipart/form-data" method="post">
+            <form class="row g-3" action="<?= URL ?>/admin/modificar.php?id=<?php echo $_GET['id']; ?>" enctype="multipart/form-data" method="post">
                 <div class="col-md-4 mt-4">
-                    <input type="file" id="img" name="img" class="form-control">
+                    <input type="file" id="img" name="img[]" class="form-control" multiple>
 
                 </div>
                 <div class="col mt-4">
@@ -111,12 +123,12 @@ if (isset($_GET['id'])) {
             <div class="container mt-4">
                 <div class="row">
                     <?php
-                    foreach ($lista as $content) {
+                    foreach ($lista as $imagen) {
                     ?>
                         <div class="card col-4" style="width: 18rem;">
-                            <img class="card-img-top" src="<?= URL ?>/admin/<?= $content['url']; ?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?= URL ?>/admin/<?= $imagen['url']; ?>" alt="Card image cap">
                             <div class="card-body">
-                                <a href="modificar.php?class=images&action=list&img=<?php echo $content['id']; ?>&id=<?php echo $_GET['id']; ?>" class="btn btn-primary">delete</a>
+                                <a href="modificar.php?class=images&action=list&imgDelete=<?php echo $imagen['id']; ?>&id=<?php echo $_GET['id']; ?>" class="btn btn-primary">delete</a>
                             </div>
                         </div>
 
