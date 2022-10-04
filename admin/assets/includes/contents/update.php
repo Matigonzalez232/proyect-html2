@@ -32,38 +32,21 @@ if (isset($_POST['title'])) {
 }
 $placehold = $contents->view($_GET['id']);
 
-if (isset($_FILES['img'])) { //funciona hasta el if
+if (isset($_FILES['img'])) {  //carga de imagenes
 
     foreach ($_FILES['img']['tmp_name'] as $key => $tmp_name) {
         if ($_FILES['img']['size'][$key] > 0 && $_FILES['img']['type'][$key] == "image/jpeg" || $_FILES['img']['type'][$key] == "image/png") {
             $directorio = "assets/img/uploads/";
             $new_name =  time() . $_FILES['img']['name'][$key];
-            
+            $_FILES['img']['name'][$key] = $new_name;
+            $archivo = $directorio . basename($_FILES['img']['name'][$key]);
+            $image->create($archivo, $placehold['cod']);
+            move_uploaded_file($_FILES['img']['tmp_name'][$key], $archivo);
+            var_dump($new_name);
         }
     }
 }
-// if (isset($_FILES['img']) && ($_FILES['img']['size'] > 0 && ($_FILES['img']['type'] == "image/jpeg") || $_FILES['img']['type'] == "image/png")) {
-//     $directorio = "assets/img/uploads/";
-//     $new_name =  time() . $_FILES['img']['name'];
-//     $_FILES['img']['name'] = $new_name;
-//     $archivo = $directorio . basename($_FILES['img']['name']);
 
-//     if ($image->create($archivo, $placehold['cod']) && move_uploaded_file($_FILES['img']['tmp_name'], $archivo)) {
-//     
-?>
-// <div class="container">
-    // <div class="row mt-3">
-        // <div class="col">
-            // <h1>Actualizado con exito</h1>
-
-            // </div>
-        // </div>
-    // </div>
-
-// <?php
-
-    //     }
-    // }
     if (isset($_GET['id'])) {
         if (isset($_GET['imgDelete'])) {
 

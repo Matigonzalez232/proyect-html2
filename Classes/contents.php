@@ -15,7 +15,6 @@ class Contents
 
 
         $query = $this->db->connect()->prepare('INSERT INTO contents (cod, title, content, keywords, description, category ) VALUES (:cod, :title, :content, :keywords, :description, :category)');
-        var_dump($item);
         try {
             $query->execute($item);
 
