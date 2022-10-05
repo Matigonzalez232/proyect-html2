@@ -42,7 +42,6 @@ if (isset($_FILES['img'])) {  //carga de imagenes
             $archivo = $directorio . basename($_FILES['img']['name'][$key]);
             $image->create($archivo, $placehold['cod']);
             move_uploaded_file($_FILES['img']['tmp_name'][$key], $archivo);
-            var_dump($new_name);
         }
     }
 }
@@ -109,7 +108,7 @@ if (isset($_FILES['img'])) {  //carga de imagenes
                     foreach ($lista as $imagen) {
                     ?>
                         <div class="card col-4" style="width: 18rem;">
-                            <img class="card-img-top" src="<?= URL ?>/admin/<?= $imagen['url']; ?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?= URL ?>/admin/<?= $imagen['url']; ?>" alt="Card image cap" style=" object-fit: cover; width: 100% ;height: 300px">
                             <div class="card-body">
                                 <a href="modificar.php?class=images&action=list&imgDelete=<?php echo $imagen['id']; ?>&id=<?php echo $_GET['id']; ?>" class="btn btn-primary">delete</a>
                             </div>

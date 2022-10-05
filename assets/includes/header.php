@@ -2,7 +2,8 @@
 <?php
 include_once dirname(__DIR__, 2) . '/Classes/contents.php';
 include_once dirname(__DIR__, 2) . '/Classes/images.php';
-define('URL', 'http://localhost/curso/proyecto-html-bootstrap_desafio2');
+define('URL', 'http://server.com/pil/proyect-html2');
+define('NOT_IMG', 'http://server.com/pil/proyect-html2/assets/img/Noimage.png');
 ?>
 
 <head>
