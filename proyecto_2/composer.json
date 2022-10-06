@@ -1,0 +1,19 @@
+{
+    "name": "project_3/tienda-online",
+    "description": "creacion de una tienda online",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "matias",
+            "email": "matigonzalez.sf@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "project_3\\":"src/"
+        }
+    }
+
+}
