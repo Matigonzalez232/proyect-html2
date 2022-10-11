@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +12,8 @@
     <title>Kawschool Store</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/estilos.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/estilos.css">
 </head>
 
 <body>
@@ -33,8 +32,20 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
+                    <li class="active">
+                        <a href="index.php" class="btn">Pedidos </a>
+                    </li>
                     <li>
-                        <a href="" class="btn">CARRITO <span class="badge">0</span></a>
+                        <a href="../peliculas/index.php" class="btn">Peliculas </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Admin <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Salir</a></li>
+                            
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -44,7 +55,7 @@
 
     <div class="container" id="main">
         <?php
-        
+
 
         ?>
 
@@ -55,8 +66,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
 
 </body>
 

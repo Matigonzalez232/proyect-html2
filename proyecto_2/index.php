@@ -1,65 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once 'assets/includes/header.php';
+include_once 'assets/includes/nav.inc.php';
+$content = new Contents;
+$listas = $content->list();
+?>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <?php foreach ($listas[0]['imagenes'] as $key => $imagen) { ?>
+            <?php if (!empty($imagen['url'])) { ?>
+                <div class="carousel-item <?= $key == 0 ? 'active' : ''; ?>">
+                    <img class="d-block w-100" src="<?= URL .  "/admin/" . $imagen['url'] ?>">
+                </div>
 
-    <title>Kawschool Store</title>
+            <?php } else { ?>
+                <div class="carousel-item <?= $key == 0 ? 'active' : ''; ?>">
+                    <img class="d-block w-100" src="<?= NOT_IMG ?>">
+                </div>
+            <?php } ?>
+        <?php } ?>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
-</head>
 
-<body>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">Kawschool Store</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right">
-                    <li>
-                        <a href="" class="btn">CARRITO <span class="badge">0</span></a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
+<div class="container pb-3">
+    <div class="row card-grande">
+        <div class="col-md-5 px-0 col-12">
+            <?php if (!empty($listas[0]['imagenes'][0]['url'])) { ?>
+                <img class="img-card-top" src="<?= "admin/" . $listas[0]['imagenes'][0]['url'] ?>">
+            <?php } else { ?>
+                <img class="img-card-top" src="<?= NOT_IMG ?>">
+            <?php } ?>
+
         </div>
-    </nav>
+        <div class="col-md-7 col-12 c-g-texto">
+            <div>
+                <h3 class=""><?= $listas[0]['title']; ?></h3>
+                <p class=""><?= $listas[0]['content']; ?></p>
+            </div>
 
-    <div class="container" id="main">
-        <?php
-        
-        require 'vendor/autoload.php';
-        $pelicula = new project_3\Pelicula;
-
-
-        ?>
+        </div>
+    </div>
 
 
-    </div> <!-- /container -->
+    <!-- agrega una card por cada content del admin -->
+    <div class="row mr-5 cards" id="cards-arriba">
+        <?php foreach ($listas as $fila) { ?>
+            <div class="col-md-4  col-12">
+                <div class="card h-100 " style="width: 18rem;">
+
+                    <?php if (!empty($fila['imagenes'][0]['url'])) { ?>
+                        <img class="img-card-top" src="<?= "admin/" . $fila['imagenes'][0]['url'] ?>">
+                    <?php } else { ?>
+                        <img class="img-card-top" src="<?= NOT_IMG ?>">
+                    <?php } ?>
+
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $fila['title']; ?></h5>
+                        <p class="card-text"><?= $fila['content']; ?></p>
+
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    </div>
+</div>
 
-</body>
+<footer class="footer-header">
+    <div class="container">
+    <div class="row mr-5 cards" id="cards-arriba">
+        <?php foreach ($listas as $fila) { ?>
+            <div class="col-md-4  col-12">
+                <div class="card h-100 " style="width: 18rem;">
 
-</html>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $fila['title']; ?></h5>
+                        <p class="card-text "><?= $fila['content']; ?></p>
+
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </div>
+    </div>
+
+    <?php
+    include_once 'assets/includes/footer.php';
+
+
+    ?>

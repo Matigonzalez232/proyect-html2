@@ -11,7 +11,7 @@ class Pelicula
     {
         $this->config = parse_ini_file(__DIR__ . '/../config.ini');
         $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
-            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf-8'
+            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
     }
     public function registrar($items)
