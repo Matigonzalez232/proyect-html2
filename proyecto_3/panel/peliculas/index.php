@@ -79,14 +79,48 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>#</td>
-                            <td>pelicula 1</td>
-                            <td>Acciones</td>
-                            <td>10</td>
-                            <td class="text-center">Foto</td>
-                            <td class="text-center"><a href="form_registrar.php" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
-                                <a href="form_actualizar.php" class="btn btn-succes btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
-                            </td>
+                            <?php require '../../vendor/autoload.php';
+                            $pelicula = new project_3\Pelicula;
+                            $info_pelicula = $pelicula->mostrar();
+                            $cantidad = count($info_pelicula);
+                            if ($cantidad > 0) {
+                                $c=0;
+                            for($x=0;$x<$cantidad;$x++){
+                            $c++;
+                            $item=$info_pelicula[$x];
+                            ?>
+                                <tr>
+                                    <td><?php print $c; ?></td>
+                                    <td><?php print $item['titulo'] ?></td>
+                                    <td><?php print $item['nombre'] ?> </td>
+                                    <td><?php print $item['precio'] ?></td>
+                                    <td class="text-center">
+                                        <?php 
+                                        $foto = '../../upload/'.$item['foto'];
+                                        if(file_exists($foto)){
+                                        ?>
+                                        <img src="<?php print $foto ;?>" alt="" width="50">
+                                        <?php }else{ ?>
+                                            SIN FOTO
+
+                                        <?php }?>
+                                    </td>
+                                    <td class="text-center"><a href="form_registrar.php" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a href="form_actualizar.php?ID=<?php print $item['id'] ;?>" class="btn btn-succes btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            } else {
+                            ?>
+                                <tr>
+                                    <td colspan="6">NO HAY REGISTROS</td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+
+
                         </tbody>
                     </table>
                 </fieldset>

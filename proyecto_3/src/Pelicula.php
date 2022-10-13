@@ -16,14 +16,14 @@ class Pelicula
     }
     public function registrar($items)
     {
-        $sql = "INSERT INTO `peliculas`(`id`, `titulo`, `descripcion`, `foto`, `precio`, `categoria_id`, `fecha`) VALUES ( :titulo, :descripcion, :foto, :precio, :categoria_id, :fecha)";
+        $sql = "INSERT INTO `peliculas`( `titulo`, `descripcion`, `foto`, `precio`, `categoria_id`, `fecha`) VALUES ( :titulo, :descripcion, :foto, :precio, :categoria_id, :fecha)";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":titulo" => $items['titulo'],
             ":descripcion" => $items['descripcion'],
             ":foto" => $items['foto'],
             ":precio" => $items['precio'],
-            ":categoria_id" => $items['categoria'],
+            ":categoria_id" => $items['categoria_id'],
             ":fecha" => $items['fecha']
         );
 
@@ -35,14 +35,14 @@ class Pelicula
     }
     public function actualizar($items)
     {
-        $sql = "UPDATE `peliculas` SET ( `titulo`=:titulo, `descripcion`=:descripcion, `foto`=:foto, `precio`=:precio, `categoria_id`=:categoria_id, `fecha`=:fecha) WHERE 'id'=:id";
+        $sql = "UPDATE `peliculas` SET  `titulo`=:titulo, `descripcion`=:descripcion, `foto`=:foto, `precio`=:precio, `categoria_id`=:categoria_id, `fecha`=:fecha WHERE 'id'=:id";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":titulo" => $items['titulo'],
             ":descripcion" => $items['descripcion'],
             ":foto" => $items['foto'],
             ":precio" => $items['precio'],
-            ":categoria_id" => $items['categoria'],
+            ":categoria_id" => $items['categoria_id'],
             ":fecha" => $items['fecha'],
             ":id" => $items['id']
         );
@@ -70,8 +70,8 @@ class Pelicula
     }
     public function mostrar()
     {
-        $sql = "SELECT * FROM peliculas.id, titulo,descripcion,foto,nombre,precio,estado INNER JOIN categorias 
-        ON peliculas.categoria_id=categorias
+        $sql = "SELECT peliculas.id, titulo,descripcion,foto,nombre,precio,estado FROM peliculas INNER JOIN categorias 
+        ON peliculas.categoria_id=categorias.id
         ORDER BY peliculas.id DESC
         ";
         $resultado = $this->cn->prepare($sql);
@@ -79,14 +79,14 @@ class Pelicula
         if ($resultado->execute()) {
             return $resultado->fetchAll();
         } else {
-            return false;
+            return [];
         }
     }
     public function mostrarPorId($id)
     {
-        $sql = "SELECT * FROM 'peliculas' WHERE 'id'=:id ";
+        $sql = 'SELECT * FROM peliculas WHERE id=:id ';
         $resultado = $this->cn->prepare($sql);
-    
+        
         $_array = array(
             ":id" => $id
         );

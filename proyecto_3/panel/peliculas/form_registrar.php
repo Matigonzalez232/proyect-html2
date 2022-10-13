@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-primary ">Registrar</button>
+                    <input type="submit" name="accion" class="btn btn-primary " value="Registrar"> 
                     <a href="index.php" class="btn btn-default">Cancelar</a>
                     </div>
                 </form>
