@@ -1,11 +1,13 @@
 <?php require '../../vendor/autoload.php';
-if(isset($_GET['ID'])&& is_numeric($_GET['ID'])){
+if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $pelicula = new project_3\Pelicula;
     $resultado = $pelicula->mostrarPorId($_GET['ID']);
-    print_r ($resultado);
-    
-    if(!$resultado){ header('Location: index.php');}
-}else{
+    print_r($resultado);
+
+    if (!$resultado) {
+        header('Location: index.php');
+    }
+} else {
     header('Location: index.php');
 }
 
@@ -73,53 +75,66 @@ if(isset($_GET['ID'])&& is_numeric($_GET['ID'])){
             <div class="col-md-12">
                 <fieldset>
                     <legend>Datos de la pelicula</legend>
-                <form method="POST" action="../acciones.php" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php print $resultado['id'] ;?>">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="titulo" class="form-label">Titulo</label>
-                            <input value="<?php print $resultado['titulo'] ;?>" type="text" class="form-control" name="titulo" required>
+                    <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<?php print $resultado['id']; ?>">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="titulo" class="form-label">Titulo</label>
+                                <input value="<?php print $resultado['titulo']; ?>" type="text" class="form-control" name="titulo" required>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="description" class="form-label">Descripcion</label>
-                            <textarea class="form-control" name="descripcion" id="" cols="3" required><?php print $resultado['descripcion'] ;?></textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="description" class="form-label">Descripcion</label>
+                                <textarea class="form-control" name="descripcion" id="" cols="3" required><?php print $resultado['descripcion']; ?></textarea>
 
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="categoria_id" class="form-label">Categorias</label>
-                            <select class="form-control" name="categoria_id" id="" required>
-                                <option value=""> selection</option>
-                                <option value="1"> Accion</option>
-                                <option value="2"> Comedia</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="categoria_id" class="form-label">Categorias</label>
+                                <select class="form-control" name="categoria_id" id="" required>
+                                    <option value=""> selection</option>
+                                    <?php 
+                                    require '../../src/categoria.php' ;
+                                    $categoria = new project_3\Categoria;
+                                    $info_categoria = $categoria->mostrar();
+                                    $cantidad = count($info_categoria);
+                                    for ($x = 0; $x < $cantidad; $x++){
+                                        $item=$info_categoria[$x];
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" name="foto" >
-                            <input type="hidden" name="foto_temp" value="<?php print $resultado['foto'] ;?>" >
-                        </div>
-                    </div>
-                    <div class="row" mb-4>
-                        <div class="col-md-3">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="text" value="<?php print $resultado['precio'] ;?>" class="form-control" name="precio" placeholder="0.00" required>
+                                    ?>
+                                    <option value="<?php print $item['id'] ?>" <?php print $resultado['categoria_id']==$item['id'] ?'selected':'' ?> >
+                                    <?php print $item['nombre'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                </select>
 
+                            </div>
                         </div>
-                    </div>
-                    <div style="margin-top: 20px;">
-                    <input type="submit" class="btn btn-primary " name="accion" value="Actualizar">
-                    <a href="infex.php" class="btn btn-default">Cancelar</a>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="foto" class="form-label">Foto</label>
+                                <input type="file" class="form-control" name="foto">
+                                <input type="hidden" name="foto_temp" value="<?php print $resultado['foto']; ?>">
+                            </div>
+                        </div>
+                        <div class="row" mb-4>
+                            <div class="col-md-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="text" value="<?php print $resultado['precio']; ?>" class="form-control" name="precio" placeholder="0.00" required>
+
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <input type="submit" class="btn btn-primary " name="accion" value="Actualizar">
+                            <a href="infex.php" class="btn btn-default">Cancelar</a>
+                        </div>
+                    </form>
                 </fieldset>
             </div>
         </div>

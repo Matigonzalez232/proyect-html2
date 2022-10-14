@@ -58,51 +58,64 @@
             <div class="col-md-12">
                 <fieldset>
                     <legend>Datos de la pelicula</legend>
-                <form method="POST" action="../acciones.php" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="titulo" class="form-label">Titulo</label>
-                            <input type="text" class="form-control" name="titulo" required>
+                    <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="titulo" class="form-label">Titulo</label>
+                                <input type="text" class="form-control" name="titulo" required>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="description" class="form-label">Descripcion</label>
-                            <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="description" class="form-label">Descripcion</label>
+                                <textarea class="form-control" name="descripcion" id="" cols="3" required></textarea>
 
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="categoria_id" class="form-label">Categorias</label>
-                            <select class="form-control" name="categoria_id" id="" required>
-                                <option value=""> selection</option>
-                                <option value="1"> opcion</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label >Categorias</label>
+                                <select class="form-control" name="categoria_id"  required>
+                                    <option value="">--selection--</option>
+                                    
+                                    <?php 
+                                    require '../../src/categoria.php' ;
+                                    $categoria = new project_3\Categoria;
+                                    $info_categoria = $categoria->mostrar();
+                                    $cantidad = count($info_categoria);
+                                    for ($x = 0; $x < $cantidad; $x++){
+                                        $item=$info_categoria[$x];
 
+                                    ?>
+                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" name="foto" required>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="foto" class="form-label">Foto</label>
+                                <input type="file" class="form-control" name="foto" required>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" mb-4>
-                        <div class="col-md-3">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="text" class="form-control" name="precio" placeholder="0.00" required>
+                        <div class="row" mb-4>
+                            <div class="col-md-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="text" class="form-control" name="precio" placeholder="0.00" required>
 
+                            </div>
                         </div>
-                    </div>
-                    <div style="margin-top: 20px;">
-                    <input type="submit" name="accion" class="btn btn-primary " value="Registrar"> 
-                    <a href="index.php" class="btn btn-default">Cancelar</a>
-                    </div>
-                </form>
+                        <div style="margin-top: 20px;">
+                            <input type="submit" name="accion" class="btn btn-primary " value="Registrar">
+                            <a href="index.php" class="btn btn-default">Cancelar</a>
+                        </div>
+                    </form>
                 </fieldset>
             </div>
         </div>

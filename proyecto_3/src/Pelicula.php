@@ -35,7 +35,7 @@ class Pelicula
     }
     public function actualizar($items)
     {
-        $sql = "UPDATE `peliculas` SET  `titulo`=:titulo, `descripcion`=:descripcion, `foto`=:foto, `precio`=:precio, `categoria_id`=:categoria_id, `fecha`=:fecha WHERE 'id'=:id";
+        $sql = "UPDATE `peliculas` SET  `titulo`=:titulo, `descripcion`=:descripcion, `foto`=:foto, `precio`=:precio, `categoria_id`=:categoria_id, `fecha`=:fecha WHERE `id`=:id";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":titulo" => $items['titulo'],
@@ -56,7 +56,7 @@ class Pelicula
     public function eliminar($id)
     {
 
-        $sql = "DELETE FROM 'peliculas'  WHERE 'id'=:id";
+        $sql = 'DELETE FROM peliculas  WHERE id=:id';
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":id" => $id
@@ -75,7 +75,7 @@ class Pelicula
         ORDER BY peliculas.id DESC
         ";
         $resultado = $this->cn->prepare($sql);
-    
+
         if ($resultado->execute()) {
             return $resultado->fetchAll();
         } else {
@@ -86,7 +86,7 @@ class Pelicula
     {
         $sql = 'SELECT * FROM peliculas WHERE id=:id ';
         $resultado = $this->cn->prepare($sql);
-        
+
         $_array = array(
             ":id" => $id
         );

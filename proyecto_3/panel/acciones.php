@@ -55,22 +55,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio' => $_POST['precio'],
             'categoria_id' => $_POST['categoria_id'],
             'fecha' => date('y-m-d'),
-            'id' =>$_POST['id']
+            'id' => $_POST['id']
         );
 
         var_dump($_params);
-        if(!empty($_POST['foto_temp']))
-        $_params['foto'] = $_POST['foto_temp'];
+        if (!empty($_POST['foto_temp']))
+            $_params['foto'] = $_POST['foto_temp'];
 
-        if(!empty($_FILE['foto']['name']))
-        $_params['foto'] = subirFoto();
+        if (!empty($_FILE['foto']['name']))
+            $_params['foto'] = subirFoto();
 
         $rpt = $pelicula->actualizar($_params);
-         var_dump($rpt);
-        // $rpt ? header('Location:peliculas/index.php') : print 'error al actualizar pelicula';
-
+        var_dump($rpt);
+        $rpt ? header('Location:peliculas/index.php') : print 'error al actualizar pelicula';
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    $id = $_GET['id'];
+
+    $rpt = $pelicula->eliminar($id);
+    var_dump($rpt);
+
+    $rpt ? header('Location:peliculas/index.php') : print 'error al eliminar pelicula';
+}
+
 function subirFoto()
 {
     $carpeta = __DIR__ . '/../upload/';
